@@ -13,3 +13,5 @@ A commit records changes to the repository. A good commit message should be rele
 
 * What is a merge conflict?
 If the same lines in the same file were changed by different people, or if a line was modified by one person or deleted by another person, git is not able to know which is correct.
+
+small change to file :)
