@@ -13,3 +13,11 @@ section.job {
 	font-size: .8em;
 
 }
+
+.job ul:hover {
+	text-decoration: underline;
+}
+
+#volunteer-experience .experience-category {
+	font-size: 1em;
+}
