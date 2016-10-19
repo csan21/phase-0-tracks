@@ -1,0 +1,23 @@
+section#contact-info {
+	font-size: .8em;
+}
+
+section.job {
+	background-color: #E9E5DC;
+	border-radius: 10px;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+.job ul {
+	font-size: .8em;
+
+}
+
+.job ul:hover {
+	text-decoration: underline;
+}
+
+#volunteer-experience .experience-category {
+	font-size: 1em;
+}
