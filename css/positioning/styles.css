@@ -1,0 +1,28 @@
+#hat {
+	max-width: 800px;
+	margin-left: 500px;
+	margin-right: 500px;
+	margin-top: 50px;
+	position: relative;
+	height: 1px;
+	z-index: 1;
+}
+
+#glasses {
+	position: relative;
+	max-width: 800px;
+	margin-left: 500px;
+	margin-right: 500px;
+	left: 62px;
+	top: 160px;
+	z-index: 1;
+}
+
+#octopus {
+	position: relative;
+	max-width: 800px;
+	margin-left: 500px;
+	margin-right: 500px;
+	left: 20px;
+	z-index: 0;
+}
