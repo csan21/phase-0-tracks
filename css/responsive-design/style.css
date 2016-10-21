@@ -4,9 +4,9 @@ body {
 
 main {
   position: absolute;
-  display: inline-block;
-  vertical-align: top;
-  width: 80%;
+  display: inline;
+  vertical-align: middle;
+  max-width: 60%;
   margin-left: 200px;
   min-width: 20%;
 }
@@ -25,8 +25,8 @@ cite {
 #external-links {
   position: absolute;
   display: inline-block;
-  vertical-align: top;
-  width: 20%;
+  vertical-align: middle;
+  max-width: 20%;
   min-width: 5%;
 }
 
@@ -53,8 +53,18 @@ figcaption {
   text-align: right;
 }
 
-@media screen and (max-width: 500px) {
-  body {
-    background-color: hotpink;
+@media screen and (max-width: 700px) {
+  main {
+    font-size: 9pt;
+    width: 50%;
+    margin-left: 150px;
+  }
+  
+  #external-links ul {
+    font-size: 9pt;
+  }
+  
+  img {
+    width: 90%;
   }
 }
