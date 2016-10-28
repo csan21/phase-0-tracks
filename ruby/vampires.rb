@@ -7,7 +7,7 @@ puts "How old are you? What year were you born?"
 	current_year = 2016
 
 	if #{current_year} - #{birth_year} == #{age}
-		age_correct = true
+		age == true
 	end
 
 puts "Our company cafeteria serves garlic bread. Should we order some for you?"
@@ -22,6 +22,8 @@ puts "Would you like to enroll in the company's health insurance?"
 	if health_ins == "yes"
 	end
 
-if age_correct && garlic_bread && health_ins
+if age && garlic_bread && health_ins == true
 	puts "Probably not a vampire"
+elsif age && garlic_bread && health_ins == false
+	puts "Probably a vampire"
 end
