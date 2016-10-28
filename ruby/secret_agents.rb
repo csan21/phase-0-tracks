@@ -7,9 +7,7 @@
 # 	- use .next on the first letter to advance one letter forward
 # 		- if character is " " then do nothing and procede to next character
 
-def encrypt
- puts "Enter your message:"
- secrets = gets.chomp
+def encrypt(secrets)
  
  index = 0
 
@@ -24,9 +22,6 @@ end
 puts secrets
 end
 
-puts encrypt
-
-
 
 # Decrypt method
 
@@ -38,12 +33,10 @@ puts encrypt
 	# - subtract 1 from the index of every letter
 	# - find the corresponding letter with the index using the alphabet
 
-def decrypt
-    puts "Enter your encrypted message:"
-    message = gets.chomp
-    alphabet = "abcdefghijklmnopqrstuvwxyz"
+def decrypt(message)
 
-    index = 0
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+	index = 0
 
 while index < message.length
 	convert_num = alphabet.index(message[index])
@@ -54,5 +47,10 @@ end
 puts message
 end
 
-puts decrypt
+# Release 3 Test
+
+puts encrypt("abc")
+puts encrypt("zed")
+puts decrypt("bcd")
+puts decrypt("afe")
 
