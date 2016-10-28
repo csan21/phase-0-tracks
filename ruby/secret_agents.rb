@@ -13,11 +13,15 @@ def encrypt(secrets)
 
 while index < secrets.length
 	secrets[index] = secrets[index].next
+		if 
+		secrets.include? '!'
+		secrets.gsub!('!', ' ')
+		end
 	index += 1
 end
 	if 
-		secrets.include? '!'
-		secrets.gsub!('!', ' ')
+		secrets.include? 'ab'
+		secrets.gsub!('b', '')
 	end
 puts secrets
 end
@@ -49,8 +53,34 @@ end
 
 # Release 3 Test
 
-puts encrypt("abc")
-puts encrypt("zed")
-puts decrypt("bcd")
-puts decrypt("afe")
+# puts encrypt("abc")
+# puts encrypt("zed")
+# puts decrypt("bcd")
+# puts decrypt("afe")
+
+# decrypt(encrypt("swordfish"))
+
+# * It works because its running one method on top of another. It is not one method written within another but actually two separate methods.
+
+# Pseudo code for interface
+
+# - Ask the user whether they would like to encrypt or decrypt
+# 	- Call appropriate method 
+# - Ask user for password
+# 	- Use password as arguement for correct method
+# - Print result and exit program
+
+puts "Would you like to encrypt or decrypt?" 
+	preference = gets.chomp
+		if preference == "encrypt"
+			puts "Enter password"
+			password = gets.chomp
+			puts encrypt(password)
+		else
+			puts "Enter password"
+			password = gets.chomp
+			puts decrypt(password)
+		end
+
+puts "Thank you for using our services, Good-Bye."
 
