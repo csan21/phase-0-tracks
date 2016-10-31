@@ -7,23 +7,31 @@ puts "How old are you? What year were you born?"
 	current_year = 2016
 
 	if #{current_year} - #{birth_year} == #{age}
-		age == true
+		correct_age = true
+	else
+		correct_age = false
 	end
 
 puts "Our company cafeteria serves garlic bread. Should we order some for you?"
 	garlic_bread = gets.chomp
 
 	if garlic_bread == "yes"
+		likes_garlic = true
+	else
+		likes_garlic = false
 	end
 
 puts "Would you like to enroll in the company's health insurance?"
-	health_ins = gets.chomp
+	health = gets.chomp
 
-	if health_ins == "yes"
+	if health == "yes"
+		health_ins = true
+	else
+		health_ins = false
 	end
 
-if age && garlic_bread && health_ins == true
+if correct_age && (likes_garlic || health_ins) == true
 	puts "Probably not a vampire"
-elsif age && garlic_bread && health_ins == false
+elsif correct_age || likes_garlic || health_ins == false
 	puts "Probably a vampire"
 end
