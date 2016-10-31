@@ -1,37 +1,48 @@
-puts "What is your name?"
-	name = gets.chomp
+puts "How many employees will be processed?"
+	employee_count = gets.chomp.to_i
+	while counter < employee_count
 
-puts "How old are you? What year were you born?"
-	age = gets.chomp
-	birth_year = gets.chomp
-	current_year = 2016
+		puts "What is your name?"
+			name = gets.chomp
 
-	if #{current_year} - #{birth_year} == #{age}
-		correct_age = true
-	else
-		correct_age = false
-	end
+		puts "How old are you? What year were you born?"
+			age = gets.chomp.to_i
+			birth_year = gets.chomp.to_i
+			current_year = 2016
 
-puts "Our company cafeteria serves garlic bread. Should we order some for you?"
-	garlic_bread = gets.chomp
+			if age = current_year - birth_year
+				correct_age = true
+			else
+				correct_age = false
+			end
 
-	if garlic_bread == "yes"
-		likes_garlic = true
-	else
-		likes_garlic = false
-	end
+		puts "Our company cafeteria serves garlic bread. Should we order some for you?"
+			garlic_bread = gets.chomp
 
-puts "Would you like to enroll in the company's health insurance?"
-	health = gets.chomp
+			if garlic_bread == "yes"
+				likes_garlic = true
+			else
+				likes_garlic = false
+			end
 
-	if health == "yes"
-		health_ins = true
-	else
-		health_ins = false
+		puts "Would you like to enroll in the company's health insurance?"
+			health = gets.chomp
+
+			if health == "yes"
+				health_ins = true
+			else
+				health_ins = false
+			end
+
+	counter += 1
 	end
 
 if correct_age && (likes_garlic || health_ins) == true
 	puts "Probably not a vampire"
-elsif correct_age || likes_garlic || health_ins == false
+elsif correct_age || likes_garlic || health_ins == true
 	puts "Probably a vampire"
+elsif correct_age || likes_garlic || health_ins == false
+	puts "Almost certainly a vampire."
+else 
+	puts "Results are inconclusive"
 end
