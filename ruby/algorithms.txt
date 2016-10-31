@@ -1,0 +1,31 @@
+Robot
+
+- Ask if going up or down
+	- If going up, press the up button
+	- If going down, press the down button
+		- Otherwise, wait for a response
+- Enter elevator
+- Ask what is the desired floor number
+	- If no floor number is given, wait for a response
+- Press the button in relation to the number of desired floor
+- Exit elevator
+
+
+Use Coffee maker
+
+- Open lid
+	- If no filter is present, place a new filter in filter basket
+	- If used filter is present, remove and discard
+- Use coffee given measurements from coffee grinds container
+	- If strong coffee is desired, scoop two tablespoons of coffee into filter
+	- If lighter coffee is desired, scoop one tablespoon of coffee into filter
+- Fill carafe with six ounces of water
+- Use carafe to fill water reservoir 
+- Place carafe back on warming plate
+- Press the ON button
+	- If it won’t turn on:
+		- Cry
+		- Walk to Starbucks, crying
+		- Drive to Dunkin Donuts, smiling
+- When light turns green, coffee is ready
+- Use carafe and pour hot coffee into mug
