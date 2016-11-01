@@ -7,21 +7,29 @@
 # 	- If user enters decor_theme, ask for a new value
 
 puts "Enter client's name:"
-	name: = gets.chomp
+	name = gets.chomp
 
 puts "Enter client's age:"
-	age: = gets.chomp
+	age = gets.chomp
 
 puts "Enter number of children in household:"
-	children: = gets.chomp.downcase
+	children = gets.chomp.downcase
 
-		if children: == "none"
-			has_children = false
+		if children == "none"
+			children = ""
 		end
+
+answer = false
+
+until answer == true
 
 puts "Enter decor theme:"
-	decor: = gets.chomp
+	decor = gets.chomp
 
-		if decor: == "decor_theme"
+		if decor == "decor_theme"
+			answer = false
 			puts "Enter a new value"
+		else 
+			answer = true
 		end
+end
