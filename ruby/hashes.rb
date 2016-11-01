@@ -33,3 +33,12 @@ puts "Enter decor theme:"
 			answer = true
 		end
 end
+
+information = {
+	name: "#{name}",
+	age: "#{age}",
+	children: "#{children}",
+	decor: "#{decor}",
+}
+
+p information
