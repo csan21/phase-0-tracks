@@ -2,43 +2,69 @@
 # - Ask user for name
 # - Ask user for age
 # - Ask user for number of children
-# 	- If user says none, skip
 # - Ask user for decor theme
-# 	- If user enters decor_theme, ask for a new value
+# - Print hash out for user to see
+# - Give user chance to update keys
+# - Print hash again
 
 puts "Enter client's name:"
 	name = gets.chomp
 
 puts "Enter client's age:"
-	age = gets.chomp
+	age = gets.chomp.to_i
 
 puts "Enter number of children in household:"
-	children = gets.chomp.downcase
-
-		if children == "none"
-			children = ""
-		end
-
-answer = false
-
-until answer == true
+	children = gets.chomp.to_i
 
 puts "Enter decor theme:"
 	decor = gets.chomp
 
-		if decor == "decor_theme"
-			answer = false
-			puts "Enter a new value"
-		else 
-			answer = true
-		end
-end
+# hash
 
 information = {
-	name: "#{name}",
-	age: "#{age}",
-	children: "#{children}",
-	decor: "#{decor}",
+	name: name,
+	age: age,
+	children: children,
+	decor: decor,
 }
 
 p information
+
+valid_input = false
+
+until valid_input
+
+	puts "Please review that the information above is correct."
+	puts "If you would like to update a section type the section name."
+	puts "If the information is correct, please type 'none' to exit"
+	
+	input = gets.chomp
+		if input == "name"
+			puts "Update name:"
+			information[:name] = gets.chomp.to_sym
+		
+		elsif input == "age"
+			puts "Update age:"
+			information[:age] = gets.chomp.to_sym
+
+		elsif input == "children"
+			puts "Update number of children:"
+			information[:children] = gets.chomp.to_sym
+
+		elsif input == "decor"
+			puts "Update decor theme:"
+			information[:decor] = gets.chomp.to_sym
+
+		else input == "none"
+			valid_input = true
+		end
+p information
+end
+
+puts "Thank you for filling it out!"
+
+
+
+
+
+
