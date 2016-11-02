@@ -8,10 +8,21 @@
 
 # greeting { |name1, name2, name3| puts "thank the sun!" }
 
-colors = {"red", "green", "blue"}
+# colors = ["red", "green", "blue"]
 
-state_capitals = {
-	illinois: "Springfield",
-	wisconsin: "Madison",
-	arizona: "Phoenix"
+# state_capitals = {
+# 	illinois: "Springfield",
+# 	wisconsin: "Madison",
+# 	arizona: "Phoenix"
 }
+
+# color.each { |color| puts "Likes the color #{color}" }
+
+# colors.map! do |color|
+# 	puts color
+# 	color.reverse
+# end
+
+# p color
+
+# state_capitals.each { |state_capitals| puts "Lets visit #{state_capitals"!}
