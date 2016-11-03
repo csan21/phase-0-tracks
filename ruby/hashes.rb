@@ -7,17 +7,27 @@
 # - Give user chance to update keys
 # - Print hash again
 
+# array
+
+user_answers = []
+
 puts "Enter client's name:"
 	name = gets.chomp
+	user_answers << name
 
 puts "Enter client's age:"
 	age = gets.chomp.to_i
+	user_answers << age
 
 puts "Enter number of children in household:"
 	children = gets.chomp.to_i
+	user_answers << children
 
 puts "Enter decor theme:"
 	decor = gets.chomp
+	user_answers << decor
+
+p user_answers
 
 # hash
 
@@ -61,10 +71,4 @@ until valid_input
 p information
 end
 
-puts "Thank you for filling it out!"
-
-
-
-
-
-
+puts "Thank you, you're information is saved!"
