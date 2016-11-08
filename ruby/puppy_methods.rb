@@ -1,3 +1,5 @@
+# Worked with Mhar Andal
+
 class Puppy
 
   def initialize()
@@ -26,15 +28,19 @@ end
 
 class Person
 
-	def initialize(age, gender, name)
+	def initialize(name, age, gender)
 		@name = name
 		@age = age
 		@gender = gender
-		puts "New person!"
+		puts "#{name}, welcome to the system!"
 	end
 
 	def birthday
 		@age += 1
+	end
+
+	def printInfo
+		puts "{name} is #{gender} and {age} years old"
 	end
 
 
@@ -42,17 +48,16 @@ class Person
 end
 
 shibainu = Puppy.new
-
 shibainu.fetch("ball")
 shibainu.speak(5)
 shibainu.rollover
 shibainu.dog_years(28)
 
-names = ['Mhar', 'Chris', 'Danny', 'Ashley', 'Rick', 'Bob']
+name = ['Mhar', 'Chris', 'Danny', 'Ashley', 'Rick', 'Bob']
 people = []
 gender = ['Male', 'Female']
-age = [0..30].to_a
+age = (0..30).to_a
 
-50.times { people << Person.new(names.sample, age.sample, gender.sample) }
+50.times { people << Person.new(name.sample, age.sample, gender.sample) }
 
 p people
