@@ -76,3 +76,23 @@ def print_list(list)
 end
 
 print_list(initial_list)
+
+
+# RELEASE 4: REFLECT
+
+# What did you learn about pseudocode from working on this challenge?
+
+# It was good practice to vocalize with a pair about the steps. It also helped
+# with structuring out the methods that we were coding.
+
+# What are the tradeoffs of using arrays and hashes for this challenge?
+
+# Hashes were the preferred since we had keys and values.
+
+# What does a method return?
+
+# A method returns a value in the type of the method's declaration
+
+# What kind of things can you pass into methods as arguments?
+
+# Required arguments, arguments with default values, and optional arguments
