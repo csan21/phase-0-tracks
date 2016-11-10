@@ -1,4 +1,6 @@
 class Santa
+	attr_reader :ethnicity, :age
+	attr_accessor :gender
 
 	def initialize(gender, ethnicity, age)
 		puts "creating a santa..."
@@ -27,6 +29,13 @@ class Santa
 		p @reindeer_ranking
 	end
 
+	def lister
+		puts "Santa Claus"
+		puts "Age: #{@age}"
+		puts "Ethnicity: #{@ethnicity}"
+		puts "Gender: #{@gender}"
+	end
+
 	# /getters/
 	# def age
 	# 	@age
@@ -49,8 +58,14 @@ end
 # Chris.get_mad_at('Rudolph')
 
 santas = []
-genders = ['male', 'female', 'agender', 'bigender', 'N/A', 'no label']
-ethnicities = ['white', 'black', 'yellow', 'brown', 'purple', 'green', 'multi']
+gender = ['male', 'female', 'agender', 'bigender', 'N/A', 'no label']
+ethnicity = ['white', 'black', 'yellow', 'brown', 'purple', 'green', 'multi']
 age = (0..140).to_a
+
+# /santa maker/
+
+100.times do |s|
+	santas << Santa.new(gender.sample, ethnicity.sample, age.sample).lister
+end
 
 
