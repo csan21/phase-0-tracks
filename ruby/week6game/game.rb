@@ -3,7 +3,9 @@
 # I tried tons of variations with arrays and without
 # To no avail.
 # Since I couldn't have the letters replace the "_" , i couldn't set a win condition
+# rspec file isn't currently working since I changed most of the methods in here
 
+# UPDATE:: currently works, but is very sloppy
 
 
 ## A Guessing Game ##
@@ -20,14 +22,16 @@
 	# If Player 2 loses, taunting message
 
 class GuessGame
-	attr_reader :word, :game_over
+	attr_reader :game_over
+	attr_accessor :word
 
 # Initializes values and hides the word
 	def initialize(word)
-		puts "New game starting now"
+		# puts "New game starting now"
 		@word = word
 		@guess_count = 0
 		@game_over = false
+		@space = ""
 	end
 
 # Takes the Player 1 word and hides it
@@ -43,8 +47,9 @@ class GuessGame
 		if @word.include? (guesser)
 			@guess_count += 1
 			puts "#{guesser} is correct"
-			@hide = hidden_word(word, guesser)
-			p @hide
+			@space = @space + guesser
+			@hide = hidden_word(word, @space)
+			print @hide
 		else
 			puts "#{guesser} is incorrect"
 			@guess_count += 1
@@ -55,7 +60,12 @@ class GuessGame
 	def game_condition
 		if @guess_count == @word.length
 			@game_over = true
+			puts
 			puts "YOU LOSE"
+		elsif (@hide.include? ("_")) == false
+			@game_over = true
+			puts
+			puts "YOU WIN"
 		end		
 	end
 
@@ -68,14 +78,16 @@ input = gets.chomp.downcase
 
 game = GuessGame.new(input)
 puts `clear`
-print game.hidden_word(input, "_")
 puts
 puts "Player 2 - You have #{input.length} attempts so be careful"
+puts
+p game.hidden_word(input, "_")
 
 while !game.game_over
 	puts
 	puts "Player 2 - GUESS A LETTER:"
 	puts
+	game.hidden_word(input, "_")
 	guesser = gets.chomp.downcase
 	game.user_guess(guesser)
 	game.game_condition
