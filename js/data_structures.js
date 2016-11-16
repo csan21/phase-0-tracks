@@ -20,3 +20,19 @@ for (var i = 0; i < horseNames.length; i++) {
 
 // console.log(horse.horseNames)
 // console.log(horse.horseColors)
+
+// Release 2
+
+function Car(make, model, year, isGoodCar) {
+
+	console.log("Our new car:", this);
+	this.make = make;
+	this.model = model;
+	this.year = year;
+	this.isGoodCar = isGoodCar;
+
+	this.vroom = function() { console.log("vroom!"); };
+
+	console.log("CAR INITIALIZATION COMPLETE");
+}
+
