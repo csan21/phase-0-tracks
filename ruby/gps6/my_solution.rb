@@ -89,3 +89,18 @@ end
 
 #=======================================================================
 # Reflection Section
+
+# What are the differences between the two different hash syntaxes shown in the state_data file?
+## STATE DATA hash had a key and value, but the value was also a nested hash with a key and value
+
+# What does require_relative do? How is it different from require?
+## require_relative provides access to file within the same directory, require provides access to a library
+
+# What are some ways to iterate through a hash?
+## .each method for both the keys and values or each_key / each_value separately
+
+# When refactoring virus_effects, what stood out to you about the variables, if anything?
+## they were already defined outside of virus_effects method
+
+# What concept did you most solidify in this challenge?
+## scope, accessing nested hashes, delegator method.
