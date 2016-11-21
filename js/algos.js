@@ -43,7 +43,7 @@ function randomWords(length) {
 
     for (var i = 0; i < length; i++) {
     	var word = ''
-    	var word_length = Math.floor(Math.random() * 10);
+    	var word_length = (Math.floor(Math.random() * 10) + 1);
     	for (var count = 0; count < word_length; count++) {
         	word += possible.charAt(Math.random() * possible.length);
     	}
@@ -70,4 +70,14 @@ var person2 = {name: "Rimat", age: 54}
 console.log(checkObjects(person1, person2))
 
 // Driver Release 2
+// part 1
 console.log(randomWords(10))
+
+// part 2
+for (var feed = 0; feed < 10; feed++) {
+	feedArray = randomWords(10)
+	console.log(feedArray)
+	longestInput(feedArray)
+	console.log("Longest input: " + longestInput(feedArray))
+}
+
