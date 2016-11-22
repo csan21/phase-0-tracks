@@ -1,0 +1,72 @@
+1. 
+
+sqlite> SELECT * FROM PLAYERS;
+1|Jimmy Butler|21|1
+2|LeBron James|23|2
+3|Derrick Rose|25|3
+4|Dwayne Wade|3|1
+5|Kyrie Irving|2|2
+6|Carmelo Anthony|8|3
+
+2.
+
+sqlite> UPDATE players SET number=7 WHERE name="Carmelo Anthony";
+sqlite> SELECT * FROM players WHERE id=6;
+6|Carmelo Anthony|7|3
+
+3.
+
+sqlite> SELECT * FROM players, teams WHERE players.team_id = teams.id;
+1|Jimmy Butler|21|1|1|Chicago Bulls
+2|LeBron James|23|2|2|Cleveland Cavaliers
+3|Derrick Rose|25|3|3|New York Knicks
+4|Dwayne Wade|3|1|1|Chicago Bulls
+5|Kyrie Irving|2|2|2|Cleveland Cavaliers
+6|Carmelo Anthony|7|3|3|New York Knicks
+
+sqlite> SELECT * FROM teams, players WHERE players.team_id = teams.id;
+1|Chicago Bulls|1|Jimmy Butler|21|1
+2|Cleveland Cavaliers|2|LeBron James|23|2
+3|New York Knicks|3|Derrick Rose|25|3
+1|Chicago Bulls|4|Dwayne Wade|3|1
+2|Cleveland Cavaliers|5|Kyrie Irving|2|2
+3|New York Knicks|6|Carmelo Anthony|7|3
+
+4.
+
+sqlite> SELECT players.name, teams.name FROM players JOIN teams ON players.team_id = teams.id;
+Jimmy Butler|Chicago Bulls
+LeBron James|Cleveland Cavaliers
+Derrick Rose|New York Knicks
+Dwayne Wade|Chicago Bulls
+Kyrie Irving|Cleveland Cavaliers
+Carmelo Anthony|New York Knicks
+
+5.
+
+sqlite> DELETE FROM players WHERE team_id=2;
+sqlite> SELECT * FROM players;
+1|Jimmy Butler|21|1
+3|Derrick Rose|25|3
+4|Dwayne Wade|3|1
+6|Carmelo Anthony|7|3
+
+Release 3 part 2
+
+sqlite> SELECT players.name FROM players LEFT JOIN teams ON players.name = teams.id;
+Jimmy Butler
+Derrick Rose
+Dwayne Wade
+Carmelo Anthony
+
+sqlite> SELECT players.number, players.name FROM players LEFT JOIN teams ON players.team_id = teams.id;
+21|Jimmy Butler
+25|Derrick Rose
+3|Dwayne Wade
+7|Carmelo Anthony
+
+sqlite> SELECT teams.name, players.number, players.name FROM players LEFT JOIN teams ON players.team_id = teams.id;
+Chicago Bulls|21|Jimmy Butler
+New York Knicks|25|Derrick Rose
+Chicago Bulls|3|Dwayne Wade
+New York Knicks|7|Carmelo Anthony
