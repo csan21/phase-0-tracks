@@ -59,13 +59,14 @@ valid = false
 
 	puts "Welcome to my DBC student money spending tracker! \n\n"
 	puts "- MENU -"
-	puts "Type 'list' to see your total spent"
-	puts "Type 'total' to see a list of your spendings in order"
+	puts "Enter a number (decimal) on any money spent (example: 10.00)"
+	puts "Type 'list' to see a list of your spendings in order"
+	puts "Type 'total' to see your total spent"
 	puts "Type 'quit' to exit when you're finished adding \n\n"
 
 until valid
 
-	puts "ENTER what you've spent today: (decimal)"
+	puts "ENTER what you've spent today:"
 	user_input = gets.chomp
 	puts ""
 
@@ -83,6 +84,7 @@ until valid
 
 	if user_input.include? "."
 		add_to_table(spent_db, user_input)
+		puts "#{user_input} added to database \n\n"
 		valid = false
 
 	elsif user_input == "list"
@@ -99,7 +101,7 @@ until valid
 		puts "Thanks for using the money tracker!"
 		valid = true
 
-	else user_input.include? letters
+	else
 		puts "Please enter a valid input"
 		valid = false
 
