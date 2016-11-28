@@ -43,19 +43,20 @@ def add_to_table(spent_db, decimal)
 end
 
 def print_table(list)
-	puts "FULL LIST:"
-	list.each { |idx, cash| puts "#{idx}: #{cash}"}
+	puts "LIST OF AMOUNTS SPENT:"
+	list.each { |idx, cash| puts "#{idx} - $ #{cash}"}
 	puts "\n\n"
 end
 
-# def update_item(db)
-# 	puts "Enter the id number for the amount you wish to update:"
-# 	id = gets.chomp.to_i
-# 	puts "Now enter a new amount:"
-# 	new_amt = gets.chomp.to_f
+def update_item(spent_db)
+	puts "Enter the id number for the amount you wish to update:"
+	id = gets.chomp.to_i
+	puts "Now enter a new amount:"
+	new_amt = gets.chomp.to_f
 
-# 	spent_db.execute("UPDATE spent SET cash='#{new_amt}' WHERE id='#{id}'")
-# end
+	spent_db.execute("UPDATE spent SET cash='#{new_amt}' WHERE id='#{id}'")
+	puts "Index #{id} was updated \n\n"
+end
 
 # TEST DB
 # spent_db.execute("INSERT INTO spent (cash) VALUES (20.55)")
@@ -80,7 +81,7 @@ valid = false
 	puts "\n\n"
 	puts "-- command list --"
 	puts "Type 'list' to see a list of your spendings in order"
-	puts "Type 'update' to choose an amount by index to update"
+	puts "Type 'update' to choose an index from list to update"
 	puts "Type 'total' to see your total spent"
 	puts "Type 'quit' to exit when you're finished adding"
 	puts "\n"
@@ -120,20 +121,13 @@ until valid
 		valid = false
 
 	elsif user_input == "update"
-		puts "Enter the id number for the amount you wish to update:"
-		id = gets.chomp.to_i
-		puts "Now enter a new amount:"
-		new_amt = gets.chomp.to_f
-
-		spent_db.execute("UPDATE spent SET cash='#{new_amt}' WHERE id='#{id}'")
-		puts "Index #{id} was updated\n\n"
+		update_item(spent_db)
 		valid = false
 
 	elsif user_input == "total"
 		cash_total = spent_db.execute(total_spent)
 		puts "TOTAL SPENT:"
-		puts cash_total
-		puts "\n\n"
+		puts "$ #{cash_total.join} \n\n"
 		valid = false
 
 	elsif user_input == "quit"
@@ -149,12 +143,10 @@ until valid
 			puts "Table has been reset!"
 			valid = true
 		elsif confirm_reset == "n"
-			puts "No reset was made"
-			puts "\n\n"
+			puts "No reset was made \n\n"
 			valid = false
 		else
-			puts "Invalid input - no reset was made"
-			puts "\n\n"
+			puts "Invalid input - no reset was made \n\n"
 			valid = false
 		end
 
