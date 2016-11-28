@@ -29,12 +29,14 @@ total_spent = <<-SQL
 SQL
 
 spent_db.execute(create_table)
-full_list = spent_db.execute(full_table)
-total = spent_db.execute(total_spent)
+# full_list = spent_db.execute(full_table)
+# total = spent_db.execute(total_spent)
 
-# def input_check(input)
-# 	if input.include? decimal
-# end
+def print_table(list)
+	puts "Full list:"
+	list.each { |idx, cash| puts "#{idx}: #{cash}"}
+end
+
 
 # TEST DB
 # spent_db.execute("INSERT INTO spent (cash) VALUES (20.55)")
@@ -43,20 +45,39 @@ total = spent_db.execute(total_spent)
 # p full_list
 
 # USER INTERFACE
-until valid
+valid = false
 
 	puts "Welcome to my DBC student money spending tracker! \n\n"
 	puts "- MENU -"
-	puts "Type 'total' to see your total spent"
-	puts "Type 'list' to see a list of your spendings in order"
+	puts "Type 'list' to see your total spent"
+	puts "Type 'total' to see a list of your spendings in order"
 	puts "Type 'quit' to exit when you're finished adding \n\n"
-	puts "ENTER what you've spent today:"
-	input = gets.chomp.to_f
+
+until valid
+
+	puts "ENTER what you've spent today: (decimal)"
+	user_input = gets.chomp
+	puts ""
+
+	if user_input.include? "."
+		spent_db.execute("INSERT INTO spent (cash) VALUES (?)", [user_input])
+		valid = false
+
+	elsif user_input == "list"
+		full_list = spent_db.execute(full_table)
+		print_table(full_list)
+		valid = false
+
+	elsif user_input == "total"
+		total = spent_db.execute(total_spent)
+		puts total
+		valid = false
+
+	elsif user_input == "quit"
+		puts "Thanks for using the money tracker!"
+		valid = true
+
+	end
 
 end
-
-
-
-
-
 
