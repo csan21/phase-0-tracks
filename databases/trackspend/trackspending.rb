@@ -1,14 +1,19 @@
 # PSEUDOCODE
 
-# ABOUT # A simple money spending tracker for me (or other dbc students) 
+# ABOUT # A very simple money spending tracker for me (or other dbc students) 
 # to use to monitor my spending habits during the on site portion. 
 
 # INPUT - a decimal representing currency in usd
 	# the first input creates a database for all inputs.
 	# inputs are added to database regardless of closing program
-# OUTPUT - the total spent so far is updated for every new input.
+# OUTPUT - 
+	# user can list all spendings in numbered order
+	# user can check total spent
+
+# Currently not optimized for user error
 
 # BUSINESS LOGIC
+
 require 'sqlite3'
 
 spent_db = SQLite3::Database.new("spent.db")
@@ -29,22 +34,27 @@ total_spent = <<-SQL
 SQL
 
 spent_db.execute(create_table)
-# full_list = spent_db.execute(full_table)
-# total = spent_db.execute(total_spent)
+
+# Methods
+
+def add_to_table(spent_db, decimal)
+	spent_db.execute("INSERT INTO spent (cash) VALUES (?)", [decimal])
+end
 
 def print_table(list)
 	puts "Full list:"
 	list.each { |idx, cash| puts "#{idx}: #{cash}"}
 end
 
-
 # TEST DB
 # spent_db.execute("INSERT INTO spent (cash) VALUES (20.55)")
 # spent_db.execute("INSERT INTO spent (cash) VALUES (8.25)")
-# puts "Total spent: #{total} USD"
+# full_list = spent_db.execute(full_table)
+# total = spent_db.execute(total_spent)
 # p full_list
 
 # USER INTERFACE
+
 valid = false
 
 	puts "Welcome to my DBC student money spending tracker! \n\n"
@@ -59,8 +69,20 @@ until valid
 	user_input = gets.chomp
 	puts ""
 
+	# if (user_input =~ /^-?[0-9]+$/) && (user_input.include? ".")
+	# 	add_to_table(spent_db, user_input)
+	# 	valid = false
+	
+	# if (user_input.is_a?(Float) == true)
+	# 	add_to_table(spent_db, user_input)
+	# 	valid = false
+
+	# Attempted a few different variations to get a working "if"
+	# Will refactor later, implemented simple code that doesn't 
+	# account for for user error atm.
+
 	if user_input.include? "."
-		spent_db.execute("INSERT INTO spent (cash) VALUES (?)", [user_input])
+		add_to_table(spent_db, user_input)
 		valid = false
 
 	elsif user_input == "list"
@@ -76,6 +98,10 @@ until valid
 	elsif user_input == "quit"
 		puts "Thanks for using the money tracker!"
 		valid = true
+
+	else user_input.include? letters
+		puts "Please enter a valid input"
+		valid = false
 
 	end
 
