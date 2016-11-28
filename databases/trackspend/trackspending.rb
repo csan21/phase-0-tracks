@@ -48,6 +48,15 @@ def print_table(list)
 	puts "\n\n"
 end
 
+# def update_item(db)
+# 	puts "Enter the id number for the amount you wish to update:"
+# 	id = gets.chomp.to_i
+# 	puts "Now enter a new amount:"
+# 	new_amt = gets.chomp.to_f
+
+# 	spent_db.execute("UPDATE spent SET cash='#{new_amt}' WHERE id='#{id}'")
+# end
+
 # TEST DB
 # spent_db.execute("INSERT INTO spent (cash) VALUES (20.55)")
 # spent_db.execute("INSERT INTO spent (cash) VALUES (8.25)")
@@ -71,8 +80,11 @@ valid = false
 	puts "\n\n"
 	puts "-- command list --"
 	puts "Type 'list' to see a list of your spendings in order"
+	puts "Type 'update' to choose an amount by index to update"
 	puts "Type 'total' to see your total spent"
 	puts "Type 'quit' to exit when you're finished adding"
+	puts "\n"
+	puts "Type 'reset' to reset table"
 	puts "\n\n"
 
 until valid
@@ -107,6 +119,16 @@ until valid
 		end
 		valid = false
 
+	elsif user_input == "update"
+		puts "Enter the id number for the amount you wish to update:"
+		id = gets.chomp.to_i
+		puts "Now enter a new amount:"
+		new_amt = gets.chomp.to_f
+
+		spent_db.execute("UPDATE spent SET cash='#{new_amt}' WHERE id='#{id}'")
+		puts "Index #{id} was updated\n\n"
+		valid = false
+
 	elsif user_input == "total"
 		cash_total = spent_db.execute(total_spent)
 		puts "TOTAL SPENT:"
@@ -117,6 +139,24 @@ until valid
 	elsif user_input == "quit"
 		puts "Thanks for using the money tracker!"
 		valid = true
+
+	elsif user_input == "reset"
+		puts "Are you sure you want to reset? (y/n)"
+		confirm_reset = gets.chomp
+
+		if confirm_reset == "y"
+			spent_db.execute("DROP TABLE spent")
+			puts "Table has been reset!"
+			valid = true
+		elsif confirm_reset == "n"
+			puts "No reset was made"
+			puts "\n\n"
+			valid = false
+		else
+			puts "Invalid input - no reset was made"
+			puts "\n\n"
+			valid = false
+		end
 
 	else
 		puts "Please enter a valid input"
