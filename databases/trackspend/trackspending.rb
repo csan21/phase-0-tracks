@@ -10,7 +10,7 @@
 	# user can list all spendings in numbered order
 	# user can check total spent
 
-# Currently not optimized for user error
+# Currently not optimized for user input error
 
 # BUSINESS LOGIC
 
@@ -29,6 +29,7 @@ full_table = <<-SQL
 	SELECT * FROM spent;
 SQL
 
+# Sum of inputs (cash) rounded to 2 decimal places
 total_spent = <<-SQL
 	SELECT ROUND(SUM(cash), 2) FROM spent;
 SQL
@@ -42,8 +43,9 @@ def add_to_table(spent_db, decimal)
 end
 
 def print_table(list)
-	puts "Full list:"
+	puts "FULL LIST:"
 	list.each { |idx, cash| puts "#{idx}: #{cash}"}
+	puts "\n\n"
 end
 
 # TEST DB
@@ -57,16 +59,25 @@ end
 
 valid = false
 
-	puts "Welcome to my DBC student money spending tracker! \n\n"
-	puts "- MENU -"
-	puts "Enter a number (decimal) on any money spent (example: 10.00)"
+	puts "\n\n"
+	puts "-------------------------------------------------"
+	puts "Welcome to my DBC student money spending tracker!" 
+	puts "-------------------------------------------------"
+	puts "\n\n"
+	puts "        ENTER A NUMBER IN DECIMAL FORM" 
+	puts "        TO REPRESENT ANY MONEY THAT YOU"
+	puts "         SPENT TODAY (example: 120.00)"
+	puts "         OR TYPE IN A COMMAND LISTED"
+	puts "\n\n"
+	puts "-- command list --"
 	puts "Type 'list' to see a list of your spendings in order"
 	puts "Type 'total' to see your total spent"
-	puts "Type 'quit' to exit when you're finished adding \n\n"
+	puts "Type 'quit' to exit when you're finished adding"
+	puts "\n\n"
 
 until valid
 
-	puts "ENTER what you've spent today:"
+	puts "ENTER a command or an amount to add:"
 	user_input = gets.chomp
 	puts ""
 
@@ -89,12 +100,18 @@ until valid
 
 	elsif user_input == "list"
 		full_list = spent_db.execute(full_table)
-		print_table(full_list)
+		if full_list.empty?
+			puts "Sorry the list is currently empty \n\n"
+		else
+			print_table(full_list)
+		end
 		valid = false
 
 	elsif user_input == "total"
-		total = spent_db.execute(total_spent)
-		puts total
+		cash_total = spent_db.execute(total_spent)
+		puts "TOTAL SPENT:"
+		puts cash_total
+		puts "\n\n"
 		valid = false
 
 	elsif user_input == "quit"
