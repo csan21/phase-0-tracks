@@ -1,14 +1,19 @@
 # PSEUDOCODE
 
-# ABOUT # A very simple money spending tracker for me (or other dbc students) 
-# to use to monitor my spending habits during the on site portion. 
+# ABOUT # 
+	# A very simple money spending tracker to help
+	# monitor my spending habits during the dbc on-site portion. 
 
-# INPUT - a decimal representing currency in usd
-	# the first input creates a database for all inputs.
-	# inputs are added to database regardless of closing program
-# OUTPUT - 
+# USER INPUT #
+	# a decimal representing currency in usd
+	# inputs populate database regardless of closing program
+		# command list of inputs
+
+# COMMANDS #
 	# user can list all spendings in numbered order
 	# user can check total spent
+	# user can update item on list by id number
+	# user can reset table 
 
 # Currently not optimized for user input error
 
