@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Heroes and Villains</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+	<div id="cubs">
+	<img src="images/cubs.jpg">
+	<p><em>heroes, you say?</em></p>
+	</div>
+	
+	<div id="sox" style="display: none">
+	<img src="images/sox.jpg">
+	<p align="right"><b>then i prefer villains</b></p>
+	</div>
+<script>
+$('#cubs').hover(function() {
+	$('#cubs').fadeOut( 1000, function() {
+		$('#sox').fadeIn( 5000 );
+	});
+});
+</script>
+</body>
+</html>
